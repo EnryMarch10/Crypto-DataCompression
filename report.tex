@@ -14,10 +14,6 @@
 \usepackage{tabularray} % For tables
 \usepackage{listings} % To use listings
 
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}, hyperfootnotes=true]{hyperref}
-% You must include hyperref before hypcap
-\usepackage[table, figure]{hypcap} % Ensures that references go to the figure or the table and not the caption
-
 \title{
   Understanding Data Compression: Theory, Techniques, and Modern Tools
 }
@@ -91,6 +87,10 @@
 \usepackage{fancyhdr} % To define custom page numbering
 \setlength{\headheight}{14.49998pt} % Avoids fancyhdr Warning, due to 12pt titles
 
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}, hyperfootnotes=true, hypertexnames=false]{hyperref}
+% You must include hyperref before hypcap
+\usepackage[table, figure]{hypcap} % Ensures that references go to the figure or the table and not the caption
+
 \begin{document}
 
 \maketitle
@@ -115,7 +115,7 @@ In fact, it is a more complex system that requires an additional step.
 This step takes the previously obtained information bit-stream as input and regenerates the original data bit-stream from it.
 
 This makes clear that the task of compression is a two-step process: an \textit{encoding} algorithm that takes a message
-and generates a "compressed" representation (hopefully with fewer bits), and a \textit{decoding} algorithm that reconstructs
+and generates a ``compressed'' representation (hopefully with fewer bits), and a \textit{decoding} algorithm that reconstructs
 the original message or some approximation of it from the compressed representation.
 
 This report reviews the key data compression techniques and tools.
@@ -144,11 +144,11 @@ The conclusions offer practical recommendations on the best tools to use, tailor
 \chapter{Information Theory}
 
 In 1948, Shannon\footnote{Claude Elwood Shannon (1916-2001) was an American mathematician, electrical engineer, computer
-scientist, cryptographer and inventor known as the "father of information theory".}, while working at the Bell Telephone
-Laboratories, published "A Mathematical Theory of Communication" \cite{AMathematicalTheoryOfCommunication}, a seminal paper that
+scientist, cryptographer and inventor known as the ``father of information theory''.}, while working at the Bell Telephone
+Laboratories, published ``A Mathematical Theory of Communication'' \cite{AMathematicalTheoryOfCommunication}, a seminal paper that
 marked the birth of information theory\footnote{Information theory is the mathematical study of the quantification, storage, and
 communication of information.}.
-In that paper, Shannon defined the concept of "information" and proposed a precise way to quantify it in his theory, the
+In that paper, Shannon defined the concept of ``information'' and proposed a precise way to quantify it in his theory, the
 fundamental unit of information is the bit.
 
 Moreover, this discipline plays behind the concepts of entropy, randomness and data compression, all topics that will be discussed
@@ -244,7 +244,7 @@ Here is how Shannon introduced the measure of Information:
 \begin{quote}
 Suppose we have a set of possible events whose probabilities of occurrence are \(p_1, p_2, \dots, p_n\).
 These probabilities are known but that is all we know concerning which event will occur.
-Can we find a measure of how much "choice" is involved in the selection of the event or how uncertain we are of the outcome?
+Can we find a measure of how much ``choice'' is involved in the selection of the event or how uncertain we are of the outcome?
 \end{quote}
 If there is such a measure, say, \(H(p_1, p_2, \dots, p_n)\)\footnote{Where \(H\) refers to Hartley.}, it is reasonable to require
 of it the following properties:
@@ -360,7 +360,7 @@ mathematicians that wrote about randomness.
 
 In 1964 and 1965, Martin-Löf\footnote{Per Erik Rutger Martin-Löf (born 1942) is a Swedish logician, philosopher, and mathematical
 statistician.} was a student in Moscow under the supervision of Kolmogorov.
-In 1966, he wrote "The definition of random sequences" that gave the first suitable definition of a random sequence.
+In 1966, he wrote ``The definition of random sequences'' that gave the first suitable definition of a random sequence.
 
 Martin-Löf extended the definition for random elements with three approaches (from \cite{AlgorithmicRandomnessAndComplexity}) to
 the definition of algorithmic randomness for infinite sequences:
@@ -371,7 +371,7 @@ equivalently, hard to compress.
 \end{definition}
 
 \begin{definition}
-The \textbf{measure-theoretic paradigm}: Random sequences  are those with no "effectively rare" properties.
+The \textbf{measure-theoretic paradigm}: Random sequences  are those with no ``effectively rare'' properties.
 If the class of sequences satisfying a given property is an effectively null set, then a random sequence should not have this
 property.
 This approach is the same as the stochastic paradigm: a random sequence should pass all effective statistical tests.
@@ -517,7 +517,7 @@ It was based on the fact that shorter code should be assigned to the most freque
   \label{fig:morse_code_pdf}
 \end{figure}
 
-In \autoref{fig:morse_code_pdf} it can be observed that the letter "e" which is the most commonly used letter in the English
+In \autoref{fig:morse_code_pdf} it can be observed that the letter ``e'' which is the most commonly used letter in the English
 language is assigned the symbol of a single dot.
 The difference in the length of encoding different symbols can be considered as a need that explains why data compression is
 important.
@@ -530,9 +530,9 @@ For further information see
 
 \subsubsection{Shannon-Fano coding (1950)}
 
-Shannon at Bell Labs and Fano\footnote{Roberto Mario "Robert" Fano (1917-2016) was an Italian-American computer scientist and
+Shannon at Bell Labs and Fano\footnote{Roberto Mario ``Robert'' Fano (1917-2016) was an Italian-American computer scientist and
 professor of electrical engineering and computer science at the Massachusetts Institute of Technology.} at MIT developed this
-method nearly simultaneously\footnote{This method was proposed in Shannon's "A Mathematical Theory of Communication" (1948) and
+method nearly simultaneously\footnote{This method was proposed in Shannon's ``A Mathematical Theory of Communication'' (1948) and
 in a later technical report by Fano (1949).}.
 It is necessary to know the probability of each symbol's appearance in a message.
 A table of codes could be constructed that has several important properties:
@@ -726,7 +726,7 @@ In the following table .
 
 It is similar to the Shannon-Fano coding. It was introduced two years later then the Shannon-Fano coding.
 It was first published in 1952 by Huffman\footnote{David Albert Huffman (1925-1999) was an American pioneer in computer science,
-known for his Huffman coding.} with a paper: "A Method for the Construction of Minimum Redundancy Codes".
+known for his Huffman coding.} with a paper: ``A Method for the Construction of Minimum Redundancy Codes''.
 It is more efficient than the other one.
 The Shannon-Fano tree is built top-down, starting by assigning the most significant bits to each code and working down
 the tree until finished.
@@ -866,7 +866,7 @@ It replaces a stream of input symbols with a single floating-point output number
 
 \begin{example}
 
-The message "BILL GATES", for example, would have the following probability distribution:
+The message ``BILL GATES'', for example, would have the following probability distribution:
 
 \begin{table}[H]
   \begin{tblr}{
@@ -953,7 +953,7 @@ Following the encoding process shown in \autoref{lst:ex_arithmetic_encoding} bri
   \caption{\label{tab:ex_arithmetic_encoding} Arithmetic encoding.}
 \end{table}
 
-So the final value 0.2572167752 (as shown in \autoref{tab:ex_arithmetic_encoding}), will uniquely encode "BILL GATES".
+So the final value 0.2572167752 (as shown in \autoref{tab:ex_arithmetic_encoding}), will uniquely encode ``BILL GATES''.
 
 The Arithmetic coding decoding algorithm is:
 
@@ -1022,7 +1022,7 @@ Floating point math is not required.
 
 \subsubsection{LZ77 (1977)}
 
-This algorithm was introduced by Lempel and Ziv in 1977 with the paper: "A Universal Algorithm for Sequential Data Compression"
+This algorithm was introduced by Lempel and Ziv in 1977 with the paper: ``A Universal Algorithm for Sequential Data Compression''
 as part of \textit{IEEE Transactions on Information Theory} journal.
 
 LZ77 is revolutionary because that compression uses previously seen text as a dictionary.
@@ -1056,8 +1056,8 @@ The dictionary is the text window, so it is adaptive.
 
 \subsubsection{LZ78 (1978)}
 
-This algorithm was introduced by Lempel and Ziv in 1978 with the paper: "Compression of Individual Sequences via Variable-Rate
-Coding" as part of \textit{IEEE Transactions on Information Theory} journal.
+This algorithm was introduced by Lempel and Ziv in 1978 with the paper: ``Compression of Individual Sequences via Variable-Rate
+Coding'' as part of \textit{IEEE Transactions on Information Theory} journal.
 
 LZ78 abandons the concept of a text window.
 Under LZ78, the dictionary is a potentially unlimited list of previously seen phrases.
@@ -1065,7 +1065,7 @@ LZ78 also outputs a series of tokens with essentially the same meanings of LZ77.
 Unlike LZ77, the phrase length is not passed since the decoder knows it.
 
 This time token is a tuple: \texttt{(index, next symbol)}.
-Here "index" takes the place of "offset" because of the different structure of the dictionary.
+Here ``index'' takes the place of ``offset'' because of the different structure of the dictionary.
 
 LZ78 adds that phrase to the dictionary.
 After the phrase is added, it will be available to the encoder at any time in the future, not just for the next few thousand
@@ -1073,12 +1073,12 @@ characters.
 
 Also in this case the decompression algorithm is very similar to the compression one.
 
-This algorithm is "greedy", so it takes locally optimal decision optimal choice at each stage.
+This algorithm is ``greedy'', so it takes locally optimal decision optimal choice at each stage.
 The problem is that in many cases, like in this one, a greedy strategy does not produce an optimal solution.
 
 \begin{example}
 
-Consider the following input text: "DAD DADA DADDY DADO...".
+Consider the following input text: ``DAD DADA DADDY DADO...''.
 
 \begin{table}[H]
   \begin{tblr}{
@@ -1130,7 +1130,7 @@ Here the token is simply a value: \texttt{index}.
 
 LZW is able to simplify the token because of the way it stores items on the dictionary.
 A new entry to the dictionary is the concatenation of the matched pattern and the next character from the input stream.
-The "next symbol" is always part of the new entry being added to the dictionary.
+The ``next symbol'' is always part of the new entry being added to the dictionary.
 
 The decoder, upon receiving the index, retrieves the matched pattern and updates its dictionary concatenating the matched pattern
 and the next inferred character. This means that the dictionary is maintained adaptive.
@@ -1194,17 +1194,17 @@ Vector quantization is most effective when the variables along the dimensions of
 The fact that cosine and Fourier transforms are periodic functions can create problems when the input contains strong aperiodic
 features.
 A solution could be to break up the input in fixed-size blocks and transform each block in isolation.
-An alternative approach is to use basis functions, called "wavelets", that could be applied to the entire image, without requiring
+An alternative approach is to use basis functions, called ``wavelets'', that could be applied to the entire image, without requiring
 blocking.
 
-To derive a suitable set of basis functions it starts from a single function, the "mother function".
+To derive a suitable set of basis functions it starts from a single function, the ``mother function''.
 Whereas cosine and Fourier repeats indefinitely, we want the wavelet mother function, to be contained within some local region,
 and approach zero as we stray further away.
 The family of basis functions are scaled and translated versions of this mother function.
 
 \subsubsection{Fractal Compression}
 
-The term "fractal" was first used by Mandelbrot\footnote{Benoit B. Mandelbrot (1924-2010) was a Polish-born French-American
+The term ``fractal'' was first used by Mandelbrot\footnote{Benoit B. Mandelbrot (1924-2010) was a Polish-born French-American
 mathematician and polymath with broad interests in the practical sciences. He is recognized for his contribution to the field of
 fractal geometry.} to designate objects that are self-similar at different scales.
 A well-known example is the Mandelbrot set, that is a complex image that can be computed by a simple program with a very short
@@ -1213,7 +1213,7 @@ The idea behind fractal compression is that if we wish to transmit a value, we c
 that iteratively converges on that value.
 The functions are mappings from images to images.
 It is enough that encoder and decoder have agreed in advance about the functions to use.
-The function family we choose is a set of "collage functions", which map regions of an image to similar regions elsewhere in the
+The function family we choose is a set of ``collage functions'', which map regions of an image to similar regions elsewhere in the
 image, modified by scaling, rotation, translation, and other simple transforms.
 
 \subsubsection{Model-Based Compression}
@@ -1234,7 +1234,7 @@ an approximation.
 
 \subsection{Compression Ratio}
 
-An important factor when considering data compression is the "compression ratio". It is simply the sample size reduction factor
+An important factor when considering data compression is the ``compression ratio''. It is simply the sample size reduction factor
 (look at \autoref{eq:factor_compression_ratio}).
 
 \begin{equation} \label{eq:factor_compression_ratio}
@@ -1338,11 +1338,11 @@ According to the Unix philosophy the archiving process is separated from the com
 Unix known programs that aim to archiving only are \texttt{ar}, \texttt{cpio}, \texttt{tar} and \texttt{libarchive}.
 
 \texttt{ar} was the original archiver, but has been largely replaced by \texttt{tar}.
-\texttt{tar} derived from "tape archive" , as it was originally developed to write data to sequential I/O devices with no file
+\texttt{tar} derived from ``tape archive'' , as it was originally developed to write data to sequential I/O devices with no file
 system of their own, such as devices that use magnetic tape.
 
 In 2001, IEEE defined a new pax format which is basically tar with additional extended attributes.
-The name "pax" is an acronym for portable archive exchange, but is also an allusion to the Latin word for "peace"; intended as a
+The name ``pax'' is an acronym for portable archive exchange, but is also an allusion to the Latin word for ``peace''; intended as a
 peaceful unification of both \texttt{tar} and \texttt{cpio}.
 
 \texttt{libarchive} is a free and open-source library, it's development was started in 2003.
@@ -1441,7 +1441,7 @@ The distinction between data and information serves as the foundation for unders
 
 A brief introduction to information theory highlighted the origins of this discipline and its key principles.
 
-The report demonstrated how information can be quantified and showed that "uncertainty" is measured as entropy.
+The report demonstrated how information can be quantified and showed that ``uncertainty'' is measured as entropy.
 
 Additionally, the concept of randomness and its relationship to data compression and algorithmic information theory was explored.
 Generating truly random sequences in digital computers was shown to be a challenging task.
