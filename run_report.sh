@@ -1,5 +1,7 @@
 #!/bin/bash
 
+REPORT=tesi
+
 # Function to check for errors and exit if the previous command failed
 function TestError() {
     if [ $? -ne 0 ]; then
@@ -19,15 +21,19 @@ function ResetAll() {
 # Function to build LaTeX
 function BuildLaTeX() {
     echo "Running pdflatex..."
-    pdflatex report
+    pdflatex "$REPORT"
     TestError
 
     echo "Running biber..."
-    biber report
+    biber "$REPORT"
     TestError
 
     echo "Running pdflatex again..."
-    pdflatex report
+    pdflatex "$REPORT"
+    TestError
+
+    echo "Running pdflatex again..."
+    pdflatex "$REPORT"
     TestError
 }
 
