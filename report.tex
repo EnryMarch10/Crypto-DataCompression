@@ -1,24 +1,22 @@
 \documentclass[12pt, a4paper]{report}
 
-\usepackage[margin=1in]{geometry}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
-\usepackage{times}
-
-\usepackage{float}
-
+\usepackage[utf8]{inputenc}
+\usepackage{times} % Selected font
+\usepackage[table, svgnames]{xcolor} % Colors
 \usepackage{url} % To put URLs
 \usepackage{xurl} % Avoids URLs to overfull \hbox
-
-\usepackage{graphicx}
+\usepackage{float} % For anchor options
+\usepackage[margin=1in]{geometry} % Page geom
+\usepackage{graphicx} % Images
 \graphicspath{{img/}} % Images global configuration
-\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
-
-\usepackage{tabularray}
-
-\usepackage[table, svgnames]{xcolor}
+% \usepackage{parskip} % Avoids paragraph indentation and puts spacing instead
+\usepackage{tabularray} % For tables
 \usepackage{listings} % To use listings
+
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}, hyperfootnotes=true]{hyperref}
+% You must include hyperref before hypcap
+\usepackage[table, figure]{hypcap} % Ensures that references go to the figure or the table and not the caption
 
 \title{
   Understanding Data Compression: Theory, Techniques, and Modern Tools
@@ -38,7 +36,7 @@
 
 \usepackage{tikz} % For graphs and overlaying text
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{compat=1.18} % Avoids pgfplots Warning
 \usepackage{amsmath} % For math symbols
 \usepackage{forest} % For binary trees
 
@@ -90,8 +88,8 @@
   showstringspaces=false                % Don't show spaces in strings
 }
 
-\usepackage{lastpage} % To keep track of the total number of pages
 \usepackage{fancyhdr} % To define custom page numbering
+\setlength{\headheight}{14.49998pt} % Avoids fancyhdr Warning, due to 12pt titles
 
 \begin{document}
 
@@ -138,8 +136,8 @@ The conclusions offer practical recommendations on the best tools to use, tailor
 \tableofcontents
 \clearpage
 
-\fancypagestyle{fancy}{\fancyfoot[C]{\thepage\ of \pageref{LastPage}}}
-\fancypagestyle{plain}{\fancyfoot[C]{\thepage\ of \pageref{LastPage}}}
+\fancypagestyle{fancy}{\fancyfoot[C]{\thepage\ of \pageref{mylastpage}}}
+\fancypagestyle{plain}{\fancyfoot[C]{\thepage\ of \pageref{mylastpage}}}
 \pagestyle{fancy}
 \newpage
 \pagenumbering{arabic}
@@ -1470,7 +1468,9 @@ levels but require significantly more time to process.
 The final decision should balance the trade-offs between the compared parameters (compression speed, ratio...), and the specific
 characteristics of the data being compressed.
 
+\label{mylastpage}
 \printbibliography
-\thispagestyle{empty}
+\thispagestyle{empty} % Avoids numbering on the first bibliography page
+\pagestyle{empty} % Avoids numbering on all bibliography pages after the first
 
 \end{document}
